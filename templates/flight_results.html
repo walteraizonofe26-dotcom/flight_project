@@ -1,0 +1,140 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}Flight Results - Fly Safe{% endblock %}
+
+{% block extra_css %}
+<link rel="stylesheet" href="{% static 'css/flight_results.css' %}">
+{% endblock %}
+
+{% block content %}
+<div class="container">
+    <div class="search-summary">
+        <h1>Available Flights</h1>
+        <div class="summary-info">
+            <span>From: <strong>Lagos</strong></span>
+            <span>To: <strong>Abuja</strong></span>
+            <span>Date: <strong>2025-01-15</strong></span>
+        </div>
+    </div>
+    
+    <div class="filters-section">
+        <div class="filter-group">
+            <label>Price Range</label>
+            <div class="price-slider">
+                <input type="range" min="50000" max="200000" value="200000" class="slider" id="price-range">
+                <div class="price-display">
+                    <span>₦50,000 - ₦<span id="max-price">200,000</span></span>
+                </div>
+            </div>
+        </div>
+        
+        <div class="filter-group">
+            <label>Departure Time</label>
+            <select class="form-select">
+                <option value="any">Any Time</option>
+                <option value="morning">Morning (5AM - 12PM)</option>
+                <option value="afternoon">Afternoon (12PM - 6PM)</option>
+                <option value="evening">Evening (6PM - 12AM)</option>
+            </select>
+        </div>
+        
+        <div class="filter-group">
+            <label>Airlines</label>
+            <div class="checkbox-group">
+                <label><input type="checkbox" checked> Air Peace</label>
+                <label><input type="checkbox"> Other Airlines</label>
+            </div>
+        </div>
+    </div>
+    
+    <div class="results-container">
+        <div class="flight-results">
+            <div class="result-item">
+                <div class="flight-info">
+                    <div class="airline">
+                        <img src="{% static 'images/airpeace-logo.png' %}" alt="Air Peace" class="airline-logo">
+                        <span>Air Peace</span>
+                    </div>
+                    <div class="times">
+                        <div class="departure">
+                            <span class="time">08:30</span>
+                            <span class="airport">LOS</span>
+                        </div>
+                        <div class="duration">
+                            <span class="hours">1h 30m</span>
+                            <span class="direct">Direct</span>
+                        </div>
+                        <div class="arrival">
+                            <span class="time">10:00</span>
+                            <span class="airport">ABV</span>
+                        </div>
+                    </div>
+                    <div class="price">
+                        <span class="amount">₦85,000</span>
+                        <button class="btn btn-primary select-flight">Select</button>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="result-item">
+                <div class="flight-info">
+                    <div class="airline">
+                        <img src="{% static 'images/airpeace-logo.png' %}" alt="Air Peace" class="airline-logo">
+                        <span>Air Peace</span>
+                    </div>
+                    <div class="times">
+                        <div class="departure">
+                            <span class="time">14:45</span>
+                            <span class="airport">LOS</span>
+                        </div>
+                        <div class="duration">
+                            <span class="hours">1h 30m</span>
+                            <span class="direct">Direct</span>
+                        </div>
+                        <div class="arrival">
+                            <span class="time">16:15</span>
+                            <span class="airport">ABV</span>
+                        </div>
+                    </div>
+                    <div class="price">
+                        <span class="amount">₦75,000</span>
+                        <button class="btn btn-primary select-flight">Select</button>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="result-item">
+                <div class="flight-info">
+                    <div class="airline">
+                        <img src="{% static 'images/airpeace-logo.png' %}" alt="Air Peace" class="airline-logo">
+                        <span>Air Peace</span>
+                    </div>
+                    <div class="times">
+                        <div class="departure">
+                            <span class="time">19:20</span>
+                            <span class="airport">LOS</span>
+                        </div>
+                        <div class="duration">
+                            <span class="hours">1h 30m</span>
+                            <span class="direct">Direct</span>
+                        </div>
+                        <div class="arrival">
+                            <span class="time">20:50</span>
+                            <span class="airport">ABV</span>
+                        </div>
+                    </div>
+                    <div class="price">
+                        <span class="amount">₦95,000</span>
+                        <button class="btn btn-primary select-flight">Select</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}
+
+{% block extra_js %}
+<script src="{% static 'js/flight_results.js' %}"></script>
+{% endblock %}

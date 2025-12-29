@@ -1,0 +1,107 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}Air Peace - Home{% endblock %}
+
+{% block extra_css %}
+<link rel="stylesheet" href="{% static 'css/home.css' %}">
+{% endblock %}
+
+{% block content %}
+<section class="hero-section">
+    <div class="hero-container">
+        <div class="hero-content">
+            <h1>Experience Comfortable Travel with Air Peace</h1>
+            <p>Book your next journey with Nigeria's most trusted airline. Affordable, reliable, and comfortable flights to destinations across Africa.</p>
+            <a href="{% url 'book_flight' %}" class="btn btn-primary btn-large">Book Your Flight Now</a>
+        </div>
+        <div class="hero-image">
+            <img src="{% static 'images/airplane-hero.jpg' %}" alt="Air Peace aircraft">
+        </div>
+    </div>
+</section>
+
+<section class="features-section">
+    <div class="container">
+        <h2>Why Choose Air Peace?</h2>
+        <div class="features-grid">
+            <div class="feature-card">
+                <div class="feature-icon">✈️</div>
+                <h3>Reliable Service</h3>
+                <p>On-time departures and arrivals with professional crew service.</p>
+            </div>
+            <div class="feature-card">
+                <div class="feature-icon">💰</div>
+                <h3>Competitive Prices</h3>
+                <p>Best value fares with flexible payment options including Pay Small Small.</p>
+            </div>
+            <div class="feature-card">
+                <div class="feature-icon">💺</div>
+                <h3>Comfortable Seats</h3>
+                <p>Spacious seating with excellent legroom for your comfort.</p>
+            </div>
+            <div class="feature-card">
+                <div class="feature-icon">📱</div>
+                <h3>Easy Booking</h3>
+                <p>Simple, fast, and secure online booking process.</p>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="booking-section">
+    <div class="container">
+        <h2>Quick Flight Search</h2>
+        <form action="{% url 'book_flight' %}" method="get" class="search-form">
+            {% csrf_token %}
+            <div class="form-row">
+                <div class="form-group">
+                    <label for="departure" class="form-label">From</label>
+                    <input type="text" id="departure" name="departure" class="form-input" placeholder="Enter departure city" required>
+                </div>
+                <div class="form-group">
+                    <label for="destination" class="form-label">To</label>
+                    <input type="text" id="destination" name="destination" class="form-input" placeholder="Enter destination city" required>
+                </div>
+                <div class="form-group">
+                    <label for="date" class="form-label">Date</label>
+                    <input type="date" id="date" name="date" class="form-input" required>
+                </div>
+            </div>
+            <button type="submit" class="btn btn-primary">Search Flights</button>
+        </form>
+    </div>
+</section>
+
+<section class="destinations-section">
+    <div class="container">
+        <h2>Popular Destinations</h2>
+        <div class="destinations-grid">
+            <div class="destination-card">
+                <img src="{% static 'images/lagos.jpg' %}" alt="Lagos">
+                <h3>Lagos</h3>
+                <p>Business hub of Nigeria</p>
+            </div>
+            <div class="destination-card">
+                <img src="{% static 'images/abuja.jpg' %}" alt="Abuja">
+                <h3>Abuja</h3>
+                <p>Captial city of Nigeria</p>
+            </div>
+            <div class="destination-card">
+                <img src="{% static 'images/accra.jpg' %}" alt="Accra">
+                <h3>Accra</h3>
+                <p>Capital of Ghana</p>
+            </div>
+            <div class="destination-card">
+                <img src="{% static 'images/kigali.jpg' %}" alt="Kigali">
+                <h3>Kigali</h3>
+                <p>Capital of Rwanda</p>
+            </div>
+        </div>
+    </div>
+</section>
+{% endblock %}
+
+{% block extra_js %}
+<script src="{% static 'js/home.js' %}"></script>
+{% endblock %}

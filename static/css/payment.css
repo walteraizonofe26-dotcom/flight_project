@@ -1,0 +1,113 @@
+.payment-container {
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 2rem;
+}
+
+.payment-container h1 {
+    text-align: center;
+    margin-bottom: 2rem;
+    color: var(--text-dark);
+    font-size: 2rem;
+}
+
+.payment-summary {
+    background-color: var(--white);
+    padding: 1.5rem;
+    border-radius: 8px;
+    box-shadow: var(--shadow);
+    margin-bottom: 2rem;
+}
+
+.payment-summary h2 {
+    margin-bottom: 1rem;
+    color: var(--text-dark);
+    border-bottom: 2px solid var(--border-color);
+    padding-bottom: 0.5rem;
+}
+
+.summary-item {
+    display: flex;
+    justify-content: space-between;
+    padding: 0.5rem 0;
+    border-bottom: 1px solid var(--border-color);
+}
+
+.summary-item.total {
+    font-weight: bold;
+    font-size: 1.1rem;
+    color: var(--primary-blue);
+    border-top: 2px solid var(--border-color);
+    margin-top: 1rem;
+}
+
+.payment-methods {
+    margin-bottom: 1.5rem;
+}
+
+.method-option {
+    margin-bottom: 1rem;
+}
+
+.method-option input[type="radio"] {
+    margin-right: 0.5rem;
+}
+
+.method-option label {
+    cursor: pointer;
+    font-weight: 500;
+}
+
+.card-details,
+.bank-details,
+.mobile-details {
+    background-color: var(--white);
+    padding: 1.5rem;
+    border-radius: 8px;
+    box-shadow: var(--shadow);
+    margin-bottom: 1.5rem;
+}
+
+.bank-info {
+    background-color: var(--bg-light);
+    padding: 1rem;
+    border-radius: 4px;
+    margin: 1rem 0;
+}
+
+.bank-info p {
+    margin-bottom: 0.5rem;
+}
+
+#ref-number,
+#mobile-ref {
+    font-weight: bold;
+    color: var(--primary-blue);
+}
+
+.payment-actions {
+    display: flex;
+    gap: 1rem;
+    justify-content: space-between;
+    margin-top: 2rem;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .payment-container {
+        margin: 0 1rem;
+        padding: 1rem;
+    }
+    
+    .form-row {
+        grid-template-columns: 1fr;
+    }
+    
+    .payment-actions {
+        flex-direction: column;
+    }
+    
+    .btn {
+        width: 100%;
+    }
+}

@@ -1,0 +1,106 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}Booking Review - Fly safe{% endblock %}
+
+{% block extra_css %}
+<link rel="stylesheet" href="{% static 'css/booking_review.css' %}">
+{% endblock %}
+
+{% block content %}
+<div class="container">
+    <div class="booking-review-container">
+        <h1>Review Your Booking</h1>
+        
+        <div class="review-summary">
+            <div class="flight-details">
+                <h2>Flight Details</h2>
+                <div class="detail-item">
+                    <span class="label">Airline:</span>
+                    <span class="value" id="airline">Air Peace</span>
+                </div>
+                <div class="detail-item">
+                    <span class="label">From:</span>
+                    <span class="value" id="from">Lagos (LOS)</span>
+                </div>
+                <div class="detail-item">
+                    <span class="label">To:</span>
+                    <span class="value" id="to">Abuja (ABV)</span>
+                </div>
+                <div class="detail-item">
+                    <span class="label">Departure:</span>
+                    <span class="value" id="departure">2025-01-15 at 08:30</span>
+                </div>
+                <div class="detail-item">
+                    <span class="label">Arrival:</span>
+                    <span class="value" id="arrival">2025-01-15 at 10:00</span>
+                </div>
+                <div class="detail-item">
+                    <span class="label">Duration:</span>
+                    <span class="value" id="duration">1h 30m</span>
+                </div>
+                <div class="detail-item">
+                    <span class="label">Class:</span>
+                    <span class="value" id="class">Economy</span>
+                </div>
+            </div>
+            
+            <div class="passenger-details">
+                <h2>Passenger Information</h2>
+                <form id="passenger-form" class="form">
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="first-name" class="form-label">First Name</label>
+                            <input type="text" id="first-name" name="first_name" class="form-input" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="last-name" class="form-label">Last Name</label>
+                            <input type="text" id="last-name" name="last_name" class="form-input" required>
+                        </div>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="email" class="form-label">Email Address</label>
+                        <input type="email" id="email" name="email" class="form-input" required>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="phone" class="form-label">Phone Number</label>
+                        <input type="tel" id="phone" name="phone" class="form-input" required>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="passport" class="form-label">Passport Number (if applicable)</label>
+                        <input type="text" id="passport" name="passport" class="form-input">
+                    </div>
+                </form>
+            </div>
+            
+            <div class="pricing-summary">
+                <h2>Price Summary</h2>
+                <div class="price-item">
+                    <span>Ticket Price</span>
+                    <span id="ticket-price">₦85,000</span>
+                </div>
+                <div class="price-item">
+                    <span>Taxes & Fees</span>
+                    <span id="taxes">₦5,000</span>
+                </div>
+                <div class="total-price">
+                    <span>Total</span>
+                    <span id="total-price">₦90,000</span>
+                </div>
+            </div>
+        </div>
+        
+        <div class="review-actions">
+            <button class="btn btn-outline" onclick="window.history.back()">← Back to Search</button>
+            <button class="btn btn-primary" id="proceed-payment">Proceed to Payment</button>
+        </div>
+    </div>
+</div>
+{% endblock %}
+
+{% block extra_js %}
+<script src="{% static 'js/booking_review.js' %}"></script>
+{% endblock %}

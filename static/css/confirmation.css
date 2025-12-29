@@ -1,0 +1,151 @@
+.confirmation-container {
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 2rem;
+    text-align: center;
+}
+
+.confirmation-icon {
+    margin: 0 auto 2rem;
+    width: 80px;
+    height: 80px;
+    background-color: var(--primary-green);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.checkmark {
+    font-size: 3rem;
+    color: var(--white);
+}
+
+.confirmation-container h1 {
+    margin-bottom: 1rem;
+    color: var(--text-dark);
+    font-size: 2rem;
+}
+
+.confirmation-container p {
+    margin-bottom: 2rem;
+    color: var(--text-light);
+    font-size: 1.1rem;
+}
+
+.confirmation-details {
+    background-color: var(--white);
+    border-radius: 8px;
+    box-shadow: var(--shadow);
+    margin-bottom: 2rem;
+    overflow: hidden;
+}
+
+.detail-section {
+    padding: 1.5rem;
+    border-bottom: 1px solid var(--border-color);
+}
+
+.detail-section:last-child {
+    border-bottom: none;
+}
+
+.detail-section h2 {
+    margin-bottom: 1rem;
+    color: var(--text-dark);
+    font-size: 1.2rem;
+}
+
+.detail-item {
+    display: flex;
+    justify-content: space-between;
+    padding: 0.5rem 0;
+    border-bottom: 1px solid var(--border-color);
+}
+
+.detail-item:last-child {
+    border-bottom: none;
+}
+
+.label {
+    font-weight: 500;
+    color: var(--text-light);
+}
+
+.value {
+    color: var(--text-dark);
+    font-weight: 500;
+}
+
+.total {
+    font-weight: bold;
+    font-size: 1.1rem;
+    color: var(--primary-blue);
+    border-top: 2px solid var(--border-color);
+    margin-top: 1rem;
+}
+
+.status-success {
+    color: var(--primary-green);
+    font-weight: bold;
+}
+
+.confirmation-actions {
+    display: flex;
+    gap: 1rem;
+    justify-content: center;
+    margin-bottom: 2rem;
+}
+
+.next-steps {
+    background-color: var(--bg-light);
+    padding: 1.5rem;
+    border-radius: 8px;
+}
+
+.next-steps h3 {
+    margin-bottom: 1rem;
+    color: var(--text-dark);
+}
+
+.next-steps ul {
+    list-style: none;
+    padding-left: 0;
+    text-align: left;
+}
+
+.next-steps li {
+    padding: 0.5rem 0;
+    position: relative;
+    padding-left: 1.5rem;
+}
+
+.next-steps li:before {
+    content: "✓";
+    position: absolute;
+    left: 0;
+    color: var(--primary-green);
+    font-weight: bold;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .confirmation-container {
+        margin: 0 1rem;
+        padding: 1rem;
+    }
+    
+    .detail-item {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 0.25rem;
+    }
+    
+    .confirmation-actions {
+        flex-direction: column;
+    }
+    
+    .btn {
+        width: 100%;
+    }
+}

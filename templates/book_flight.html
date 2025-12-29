@@ -1,0 +1,80 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}Book Your Flight - Fly Safe{% endblock %}
+
+{% block extra_css %}
+<link rel="stylesheet" href="{% static 'css/book_flight.css' %}">
+{% endblock %}
+
+{% block content %}
+<div class="container">
+    <div class="booking-form-container">
+        <h1>Book Your Flight</h1>
+        <p>Find and book your perfect flight with Air Peace</p>
+        
+        <form id="flight-search-form" class="flight-search-form">
+            {% csrf_token %}
+            <div class="form-row">
+                <div class="form-group">
+                    <label for="from" class="form-label">From</label>
+                    <input type="text" id="from" name="from" class="form-input" placeholder="City or airport" required>
+                </div>
+                <div class="form-group">
+                    <label for="to" class="form-label">To</label>
+                    <input type="text" id="to" name="to" class="form-input" placeholder="City or airport" required>
+                </div>
+            </div>
+            
+            <div class="form-row">
+                <div class="form-group">
+                    <label for="departure-date" class="form-label">Departure Date</label>
+                    <input type="date" id="departure-date" name="departure_date" class="form-input" required>
+                </div>
+                <div class="form-group">
+                    <label for="return-date" class="form-label">Return Date</label>
+                    <input type="date" id="return-date" name="return_date" class="form-input">
+                </div>
+            </div>
+            
+            <div class="form-row">
+                <div class="form-group">
+                    <label for="passengers" class="form-label">Passengers</label>
+                    <select id="passengers" name="passengers" class="form-select">
+                        <option value="1">1 Passenger</option>
+                        <option value="2">2 Passengers</option>
+                        <option value="3">3 Passengers</option>
+                        <option value="4">4 Passengers</option>
+                        <option value="5">5 Passengers</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label for="class" class="form-label">Class</label>
+                    <select id="class" name="class" class="form-select">
+                        <option value="economy">Economy</option>
+                        <option value="business">Business</option>
+                    </select>
+                </div>
+            </div>
+            
+            <div class="form-actions">
+                <button type="submit" class="btn btn-primary btn-search">Search Flights</button>
+            </div>
+        </form>
+    </div>
+    
+    <div class="booking-tips">
+        <h3>Tips for Better Prices</h3>
+        <ul>
+            <li>Book in advance for better rates</li>
+            <li>Consider flying mid-week for lower prices</li>
+            <li>Check our Pay Small Small option for flexible payments</li>
+            <li>Sign up for our newsletter to get exclusive deals</li>
+        </ul>
+    </div>
+</div>
+{% endblock %}
+
+{% block extra_js %}
+<script src="{% static 'js/book_flight.js' %}"></script>
+{% endblock %}

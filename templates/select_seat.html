@@ -1,0 +1,105 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}Select Seat - Fly Safe{% endblock %}
+
+{% block extra_css %}
+<link rel="stylesheet" href="{% static 'css/travel.css' %}">
+{% endblock %}
+
+{% block content %}
+<div class="container">
+    <div class="seat-selection-container">
+        <h1>Select Your Seat</h1>
+        
+        <div class="flight-info-summary">
+            <div class="info-item">
+                <strong>Flight:</strong> Lagos to Abuja
+            </div>
+            <div class="info-item">
+                <strong>Date:</strong> January 15, 2025
+            </div>
+            <div class="info-item">
+                <strong>Time:</strong> 08:30 AM
+            </div>
+        </div>
+        
+        <div class="seat-map">
+            <div class="cabin-class">
+                <h3>Economy Class</h3>
+                <div class="seats-grid">
+                    <!-- Seat rows -->
+                    <div class="seat-row">
+                        <span class="row-label">1</span>
+                        <div class="seat" data-seat="1A" data-class="economy">1A</div>
+                        <div class="seat" data-seat="1B" data-class="economy">1B</div>
+                        <div class="seat" data-seat="1C" data-class="economy">1C</div>
+                        <div class="aisle"></div>
+                        <div class="seat" data-seat="1D" data-class="economy">1D</div>
+                        <div class="seat" data-seat="1E" data-class="economy">1E</div>
+                        <div class="seat" data-seat="1F" data-class="economy">1F</div>
+                    </div>
+                    
+                    <div class="seat-row">
+                        <span class="row-label">2</span>
+                        <div class="seat" data-seat="2A" data-class="economy">2A</div>
+                        <div class="seat" data-seat="2B" data-class="economy">2B</div>
+                        <div class="seat" data-seat="2C" data-class="economy">2C</div>
+                        <div class="aisle"></div>
+                        <div class="seat" data-seat="2D" data-class="economy">2D</div>
+                        <div class="seat" data-seat="2E" data-class="economy">2E</div>
+                        <div class="seat" data-seat="2F" data-class="economy">2F</div>
+                    </div>
+                    
+                    <div class="seat-row">
+                        <span class="row-label">3</span>
+                        <div class="seat" data-seat="3A" data-class="economy">3A</div>
+                        <div class="seat" data-seat="3B" data-class="economy">3B</div>
+                        <div class="seat" data-seat="3C" data-class="economy">3C</div>
+                        <div class="aisle"></div>
+                        <div class="seat" data-seat="3D" data-class="economy">3D</div>
+                        <div class="seat" data-seat="3E" data-class="economy">3E</div>
+                        <div class="seat" data-seat="3F" data-class="economy">3F</div>
+                    </div>
+                    
+                    <div class="seat-row">
+                        <span class="row-label">4</span>
+                        <div class="seat" data-seat="4A" data-class="economy">4A</div>
+                        <div class="seat" data-seat="4B" data-class="economy">4B</div>
+                        <div class="seat" data-seat="4C" data-class="economy">4C</div>
+                        <div class="aisle"></div>
+                        <div class="seat" data-seat="4D" data-class="economy">4D</div>
+                        <div class="seat" data-seat="4E" data-class="economy">4E</div>
+                        <div class="seat" data-seat="4F" data-class="economy">4F</div>
+                    </div>
+                    
+                    <div class="seat-row">
+                        <span class="row-label">5</span>
+                        <div class="seat" data-seat="5A" data-class="economy">5A</div>
+                        <div class="seat" data-seat="5B" data-class="economy">5B</div>
+                        <div class="seat" data-seat="5C" data-class="economy">5C</div>
+                        <div class="aisle"></div>
+                        <div class="seat" data-seat="5D" data-class="economy">5D</div>
+                        <div class="seat" data-seat="5E" data-class="economy">5E</div>
+                        <div class="seat" data-seat="5F" data-class="economy">5F</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <div class="selected-seat-info">
+            <h3>Selected Seat: <span id="selected-seat-display">None</span></h3>
+            <p>Click on a seat to select it. Selected seats will be highlighted in green.</p>
+        </div>
+        
+        <div class="seat-actions">
+            <button class="btn btn-outline" onclick="window.history.back()">← Back</button>
+            <button class="btn btn-primary" id="continue-btn" disabled>Continue</button>
+        </div>
+    </div>
+</div>
+{% endblock %}
+
+{% block extra_js %}
+<script src="{% static 'js/travel.js' %}"></script>
+{% endblock %}

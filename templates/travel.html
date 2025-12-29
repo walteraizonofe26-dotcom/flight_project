@@ -1,0 +1,87 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}Travel Services - Fly Safe{% endblock %}
+
+{% block extra_css %}
+<link rel="stylesheet" href="{% static 'css/travel.css' %}">
+{% endblock %}
+
+{% block content %}
+<div class="container">
+    <div class="travel-header">
+        <h1>Travel Services</h1>
+        <p>Complete your travel experience with our comprehensive services</p>
+    </div>
+    
+    <div class="services-grid">
+        <div class="service-card">
+            <div class="service-icon">✈️</div>
+            <h3>Book Flight</h3>
+            <p>Find and book your perfect flight with competitive prices</p>
+            <a href="{% url 'book_flight' %}" class="btn btn-primary">Book Now</a>
+        </div>
+        
+        <div class="service-card">
+            <div class="service-icon">💺</div>
+            <h3>Select Seat</h3>
+            <p>Choose your preferred seat for maximum comfort</p>
+            <a href="{% url 'select_seat' %}" class="btn btn-primary">Select Seat</a>
+        </div>
+        
+        <div class="service-card">
+            <div class="service-icon">🚗</div>
+            <h3>Book a Car</h3>
+            <p>Convenient car rental services at your destination</p>
+            <a href="{% url 'book_car' %}" class="btn btn-primary">Rent Now</a>
+        </div>
+        
+        <div class="service-card">
+            <div class="service-icon">🏨</div>
+            <h3>Book a Hotel</h3>
+            <p>Find the perfect accommodation for your stay</p>
+            <a href="{% url 'book_hotel' %}" class="btn btn-primary">Find Hotel</a>
+        </div>
+        
+        <div class="service-card">
+            <div class="service-icon">💳</div>
+            <h3>Pay Small Small</h3>
+            <p>Flexible payment options for your bookings</p>
+            <a href="{% url 'pay_small_small' %}" class="btn btn-primary">Learn More</a>
+        </div>
+        
+        <div class="service-card">
+            <div class="service-icon">✈️</div>
+            <h3>Flight Status</h3>
+            <p>Check your flight status and updates</p>
+            <a href="#" class="btn btn-outline">Check Status</a>
+        </div>
+    </div>
+    
+    <div class="travel-benefits">
+        <h2>Why Choose Our Travel Services?</h2>
+        <div class="benefits-grid">
+            <div class="benefit-item">
+                <h4>Integrated Experience</h4>
+                <p>Seamless booking across all travel services from flights to hotels</p>
+            </div>
+            <div class="benefit-item">
+                <h4>Best Price Guarantee</h4>
+                <p>We guarantee the best prices for all our services</p>
+            </div>
+            <div class="benefit-item">
+                <h4>24/7 Support</h4>
+                <p>Round-the-clock customer support for all your travel needs</p>
+            </div>
+            <div class="benefit-item">
+                <h4>Secure Booking</h4>
+                <p>Secure and reliable booking system with data protection</p>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}
+
+{% block extra_js %}
+<script src="{% static 'js/travel.js' %}"></script>
+{% endblock %}

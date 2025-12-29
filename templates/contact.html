@@ -1,0 +1,84 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}Contact Us - FlySafe{% endblock %}
+
+{% block extra_css %}
+<link rel="stylesheet" href="{% static 'css/contact.css' %}">
+{% endblock %}
+
+{% block content %}
+<div class="container">
+    <div class="contact-header">
+        <h1>Contact Us</h1>
+        <p>We're here to help with any questions or concerns you may have</p>
+    </div>
+    
+    <div class="contact-grid">
+        <div class="contact-info">
+            <h2>Get In Touch</h2>
+            
+            <div class="contact-item">
+                <h3>Customer Service</h3>
+                <p>+234 800 000 0000</p>
+                <p>support@airpeace.com</p>
+            </div>
+            
+            <div class="contact-item">
+                <h3>Reservations</h3>
+                <p>+234 800 000 0001</p>
+                <p>reservations@airpeace.com</p>
+            </div>
+            
+            <div class="contact-item">
+                <h3>Baggage Claims</h3>
+                <p>+234 800 000 0002</p>
+                <p>baggage@airpeace.com</p>
+            </div>
+            
+            <div class="contact-item">
+                <h3>Head Office</h3>
+                <p>27b, Allen Avenue, Ikeja, Lagos, Nigeria</p>
+            </div>
+        </div>
+        
+        <div class="contact-form">
+            <h2>Send Us a Message</h2>
+            <form id="contact-form" class="form">
+                {% csrf_token %}
+                <div class="form-group">
+                    <label for="name" class="form-label">Full Name</label>
+                    <input type="text" id="name" name="name" class="form-input" required>
+                </div>
+                
+                <div class="form-group">
+                    <label for="email" class="form-label">Email Address</label>
+                    <input type="email" id="email" name="email" class="form-input" required>
+                </div>
+                
+                <div class="form-group">
+                    <label for="subject" class="form-label">Subject</label>
+                    <input type="text" id="subject" name="subject" class="form-input" required>
+                </div>
+                
+                <div class="form-group">
+                    <label for="message" class="form-label">Message</label>
+                    <textarea id="message" name="message" rows="5" class="form-input" required></textarea>
+                </div>
+                
+                <button type="submit" class="btn btn-primary">Send Message</button>
+            </form>
+        </div>
+    </div>
+    
+    <div class="support-hours">
+        <h3>Customer Support Hours</h3>
+        <p>Monday - Sunday: 24 hours</p>
+        <p>We're available around the clock to assist you with your travel needs</p>
+    </div>
+</div>
+{% endblock %}
+
+{% block extra_js %}
+<script src="{% static 'js/contact.js' %}"></script>
+{% endblock %}

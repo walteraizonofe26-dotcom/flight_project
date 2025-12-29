@@ -1,0 +1,103 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}Pay Small Small - Fly Safe{% endblock %}
+
+{% block extra_css %}
+<link rel="stylesheet" href="{% static 'css/travel.css' %}">
+{% endblock %}
+
+{% block content %}
+<div class="container">
+    <div class="pay-small-container">
+        <h1>Pay Small Small</h1>
+        <p>Flexible payment options for your bookings</p>
+        
+        <div class="pay-small-features">
+            <div class="feature-card">
+                <h3>How It Works</h3>
+                <p>Pay a small deposit to secure your booking and pay the balance in installments over time.</p>
+            </div>
+            
+            <div class="feature-card">
+                <h3>Benefits</h3>
+                <ul>
+                    <li>Flexible payment schedule</li>
+                    <li>No interest charges</li>
+                    <li>Secure your booking immediately</li>
+                    <li>Manage payments online</li>
+                </ul>
+            </div>
+            
+            <div class="feature-card">
+                <h3>Eligibility</h3>
+                <p>Available for bookings over ₦50,000. Subject to credit approval.</p>
+            </div>
+        </div>
+        
+        <div class="payment-plans">
+            <h2>Payment Plans</h2>
+            <div class="plan">
+                <h3>3-Month Plan</h3>
+                <p>Pay 30% deposit, then 3 equal monthly payments</p>
+                <div class="plan-example">
+                    <p>Example: ₦90,000 booking</p>
+                    <p>Deposit: ₦27,000</p>
+                    <p>Monthly: ₦21,000</p>
+                </div>
+            </div>
+            
+            <div class="plan">
+                <h3>6-Month Plan</h3>
+                <p>Pay 20% deposit, then 6 equal monthly payments</p>
+                <div class="plan-example">
+                    <p>Example: ₦90,000 booking</p>
+                    <p>Deposit: ₦18,000</p>
+                    <p>Monthly: ₦12,000</p>
+                </div>
+            </div>
+        </div>
+        
+        <div class="apply-section">
+            <h2>Apply for Pay Small Small</h2>
+            <form class="pay-small-form">
+                <div class="form-row">
+                    <div class="form-group">
+                        <label for="full-name" class="form-label">Full Name</label>
+                        <input type="text" id="full-name" class="form-input" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="email" class="form-label">Email Address</label>
+                        <input type="email" id="email" class="form-input" required>
+                    </div>
+                </div>
+                
+                <div class="form-row">
+                    <div class="form-group">
+                        <label for="phone" class="form-label">Phone Number</label>
+                        <input type="tel" id="phone" class="form-input" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="booking-amount" class="form-label">Booking Amount (₦)</label>
+                        <input type="number" id="booking-amount" class="form-input" required>
+                    </div>
+                </div>
+                
+                <div class="form-group">
+                    <label for="preferred-plan" class="form-label">Preferred Payment Plan</label>
+                    <select id="preferred-plan" class="form-select">
+                        <option value="3-month">3-Month Plan</option>
+                        <option value="6-month">6-Month Plan</option>
+                    </select>
+                </div>
+                
+                <button type="submit" class="btn btn-primary">Apply Now</button>
+            </form>
+        </div>
+    </div>
+</div>
+{% endblock %}
+
+{% block extra_js %}
+<script src="{% static 'js/travel.js' %}"></script>
+{% endblock %}

@@ -1,0 +1,107 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}Payment - Fly Safe{% endblock %}
+
+{% block extra_css %}
+<link rel="stylesheet" href="{% static 'css/payment.css' %}">
+{% endblock %}
+
+{% block content %}
+<div class="container">
+    <div class="payment-container">
+        <h1>Payment Information</h1>
+        
+        <div class="payment-summary">
+            <h2>Booking Summary</h2>
+            <div class="summary-item">
+                <span>Flight:</span>
+                <span id="flight-summary">Lagos to Abuja</span>
+            </div>
+            <div class="summary-item">
+                <span>Date:</span>
+                <span id="date-summary">2025-01-15</span>
+            </div>
+            <div class="summary-item">
+                <span>Passenger:</span>
+                <span id="passenger-summary">John Doe</span>
+            </div>
+            <div class="summary-item total">
+                <span>Total Amount:</span>
+                <span id="total-amount">₦90,000</span>
+            </div>
+        </div>
+        
+        <form id="payment-form" class="payment-form">
+            {% csrf_token %}
+            <div class="payment-methods">
+                <h3>Payment Method</h3>
+                <div class="method-option">
+                    <input type="radio" id="card" name="payment_method" value="card" checked>
+                    <label for="card">Credit/Debit Card</label>
+                </div>
+                <div class="method-option">
+                    <input type="radio" id="bank" name="payment_method" value="bank">
+                    <label for="bank">Bank Transfer</label>
+                </div>
+                <div class="method-option">
+                    <input type="radio" id="mobile" name="payment_method" value="mobile">
+                    <label for="mobile">Mobile Money</label>
+                </div>
+            </div>
+            
+            <div class="card-details" id="card-details">
+                <h3>Card Information</h3>
+                <div class="form-group">
+                    <label for="card-number" class="form-label">Card Number</label>
+                    <input type="text" id="card-number" name="card_number" class="form-input" placeholder="1234 5678 9012 3456" maxlength="19" required>
+                </div>
+                
+                <div class="form-row">
+                    <div class="form-group">
+                        <label for="expiry" class="form-label">Expiry Date</label>
+                        <input type="text" id="expiry" name="expiry" class="form-input" placeholder="MM/YY" maxlength="5" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="cvv" class="form-label">CVV</label>
+                        <input type="text" id="cvv" name="cvv" class="form-input" placeholder="123" maxlength="3" required>
+                    </div>
+                </div>
+                
+                <div class="form-group">
+                    <label for="card-name" class="form-label">Cardholder Name</label>
+                    <input type="text" id="card-name" name="card_name" class="form-input" required>
+                </div>
+            </div>
+            
+            <div class="bank-details" id="bank-details" style="display: none;">
+                <h3>Bank Transfer Details</h3>
+                <p>Please transfer the amount to the following account:</p>
+                <div class="bank-info">
+                    <p><strong>Account Name:</strong> Air Peace Airlines Limited</p>
+                    <p><strong>Account Number:</strong> 1234567890</p>
+                    <p><strong>Bank:</strong> First Bank of Nigeria</p>
+                    <p><strong>Reference:</strong> <span id="ref-number">AP20250115001</span></p>
+                </div>
+                <p>After payment, please upload your proof of payment.</p>
+            </div>
+            
+            <div class="mobile-details" id="mobile-details" style="display: none;">
+                <h3>Mobile Money Details</h3>
+                <p>Dial *556# on your mobile phone and follow the prompts to make payment.</p>
+                <p>Amount: <strong id="mobile-amount">₦90,000</strong></p>
+                <p>Reference: <strong id="mobile-ref">AP20250115001</strong></p>
+            </div>
+            
+            <div class="payment-actions">
+                <button type="button" class="btn btn-outline" onclick="window.history.back()">← Back</button>
+                <button type="submit" class="btn btn-primary" id="pay-btn">Pay Now</button>
+            </div>
+        </form>
+    </div>
+</div>
+{% endblock %}
+
+{% block extra_js %}
+<script src="{% static 'js/payment.js' %}"></script>
+{% endblock %}

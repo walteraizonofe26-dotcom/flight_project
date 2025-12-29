@@ -1,0 +1,118 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}Booking Confirmation - Fly Safe{% endblock %}
+
+{% block extra_css %}
+<link rel="stylesheet" href="{% static 'css/confirmation.css' %}">
+{% endblock %}
+
+{% block content %}
+<div class="container">
+    <div class="confirmation-container">
+        <div class="confirmation-icon">
+            <div class="checkmark">✓</div>
+        </div>
+        
+        <h1>Booking Confirmed!</h1>
+        <p>Your flight has been successfully booked. Here are your details:</p>
+        
+        <div class="confirmation-details">
+            <div class="detail-section">
+                <h2>Booking Information</h2>
+                <div class="detail-item">
+                    <span class="label">Booking Reference:</span>
+                    <span class="value" id="booking-ref">AP20250115001</span>
+                </div>
+                <div class="detail-item">
+                    <span class="label">Status:</span>
+                    <span class="value status-success">Confirmed</span>
+                </div>
+                <div class="detail-item">
+                    <span class="label">Payment:</span>
+                    <span class="value">Paid</span>
+                </div>
+            </div>
+            
+            <div class="detail-section">
+                <h2>Flight Details</h2>
+                <div class="detail-item">
+                    <span class="label">Airline:</span>
+                    <span class="value">Air Peace</span>
+                </div>
+                <div class="detail-item">
+                    <span class="label">From:</span>
+                    <span class="value">Lagos (LOS)</span>
+                </div>
+                <div class="detail-item">
+                    <span class="label">To:</span>
+                    <span class="value">Abuja (ABV)</span>
+                </div>
+                <div class="detail-item">
+                    <span class="label">Date:</span>
+                    <span class="value">January 15, 2025</span>
+                </div>
+                <div class="detail-item">
+                    <span class="label">Time:</span>
+                    <span class="value">08:30 AM - 10:00 AM</span>
+                </div>
+                <div class="detail-item">
+                    <span class="label">Duration:</span>
+                    <span class="value">1h 30m</span>
+                </div>
+            </div>
+            
+            <div class="detail-section">
+                <h2>Passenger Information</h2>
+                <div class="detail-item">
+                    <span class="label">Name:</span>
+                    <span class="value" id="passenger-name">John Doe</span>
+                </div>
+                <div class="detail-item">
+                    <span class="label">Email:</span>
+                    <span class="value" id="passenger-email">john.doe@email.com</span>
+                </div>
+                <div class="detail-item">
+                    <span class="label">Phone:</span>
+                    <span class="value" id="passenger-phone">+234 800 000 0000</span>
+                </div>
+            </div>
+            
+            <div class="detail-section">
+                <h2>Payment Summary</h2>
+                <div class="detail-item">
+                    <span class="label">Ticket Price:</span>
+                    <span class="value">₦85,000</span>
+                </div>
+                <div class="detail-item">
+                    <span class="label">Taxes & Fees:</span>
+                    <span class="value">₦5,000</span>
+                </div>
+                <div class="detail-item total">
+                    <span class="label">Total Paid:</span>
+                    <span class="value">₦90,000</span>
+                </div>
+            </div>
+        </div>
+        
+        <div class="confirmation-actions">
+            <button class="btn btn-primary" onclick="printBooking()">Print Itinerary</button>
+            <a href="{% url 'home' %}" class="btn btn-outline">Back to Home</a>
+        </div>
+        
+        <div class="next-steps">
+            <h3>Next Steps</h3>
+            <ul>
+                <li>You will receive a confirmation email with your booking details</li>
+                <li>Check-in online 24 hours before your flight</li>
+                <li>Arrive at the airport 2 hours before domestic flights</li>
+                <li>Have your ID and booking reference ready</li>
+            </ul>
+        </div>
+    </div>
+</div>
+{% endblock %}
+
+{% block extra_js %}
+<script src="{% static 'js/confirmation.js' %}"></script>
+{% endblock %}
