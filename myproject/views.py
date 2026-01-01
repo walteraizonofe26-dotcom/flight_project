@@ -19,7 +19,7 @@ def book_flight(request):
 
 def booking_review(request):
    # return HttpResponse("my about page.")
-   return render(request, 'book_review.html')
+   return render(request, 'booking_review.html')
 
 def confirmation(request):
    # return HttpResponse("my about page.")
@@ -29,9 +29,9 @@ def contact(request):
    # return HttpResponse("my about page.")
    return render(request, 'contact.html')
 
-def flight_result(request):
+def flight_results(request):
    # return HttpResponse("my about page.")
-   return render(request, 'flight_result.html')
+   return render(request, 'flight_results.html')
 
 def payment(request):
    # return HttpResponse("my about page.")

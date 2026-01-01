@@ -1,15 +1,17 @@
 // Home page specific JavaScript
 document.addEventListener('DOMContentLoaded', function() {
     // Set minimum date for flight search
-    const dateInput = document.getElementById('date');
-    if (dateInput) {
+    const departureDate = document.getElementById('departure-date');
+    const returnDate = document.getElementById('return-date');
+    
+    if (departureDate) {
         const today = new Date();
         const tomorrow = new Date(today);
         tomorrow.setDate(tomorrow.getDate() + 1);
         
         const formattedDate = tomorrow.toISOString().split('T')[0];
-        dateInput.min = formattedDate;
-        dateInput.value = formattedDate;
+        departureDate.min = formattedDate;
+        departureDate.value = formattedDate;
     }
 
     // Auto-complete for departure and destination
@@ -29,6 +31,38 @@ document.addEventListener('DOMContentLoaded', function() {
     if (destinationInput) {
         setupAutoComplete(destinationInput, cities);
     }
+
+    // Set return date to be after departure date
+    if (departureDate && returnDate) {
+        departureDate.addEventListener('change', function() {
+            if (this.value) {
+                returnDate.min = this.value;
+                if (returnDate.value && returnDate.value < this.value) {
+                    returnDate.value = this.value;
+                }
+            }
+        });
+    }
+
+    // Search tabs functionality
+    const tabBtns = document.querySelectorAll('.tab-btn');
+    const roundTripField = document.querySelector('.round-trip-field');
+    
+    tabBtns.forEach(btn => {
+        btn.addEventListener('click', function() {
+            // Remove active class from all buttons
+            tabBtns.forEach(b => b.classList.remove('active'));
+            // Add active class to clicked button
+            this.classList.add('active');
+            
+            // Show/hide return date field based on tab
+            if (this.dataset.tab === 'round-trip') {
+                roundTripField.style.display = 'block';
+            } else {
+                roundTripField.style.display = 'none';
+            }
+        });
+    });
 
     // Smooth scrolling for anchor links
     const links = document.querySelectorAll('a[href^="#"]');

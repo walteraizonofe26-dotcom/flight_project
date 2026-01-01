@@ -1,7 +1,7 @@
 {% extends 'base.html' %}
 {% load static %}
 
-{% block title %}Air Peace - Home{% endblock %}
+{% block title %}Fly Safe - Home{% endblock %}
 
 {% block extra_css %}
 <link rel="stylesheet" href="{% static 'css/home.css' %}">
@@ -17,6 +17,73 @@
         </div>
         <div class="hero-image">
             <img src="{% static 'images/airplane-hero.jpg' %}" alt="Air Peace aircraft">
+        </div>
+    </div>
+</section>
+
+<!-- Enhanced Flight Search Section -->
+<section class="flight-search-section">
+    <div class="container">
+        <div class="flight-search-container">
+            <h2>Find Your Perfect Flight</h2>
+            <p>Search and book flights with competitive prices and flexible options</p>
+            
+            <form action="{% url 'book_flight' %}" method="get" class="flight-search-form">
+                {% csrf_token %}
+                <div class="search-tabs">
+                    <button type="button" class="tab-btn active" data-tab="one-way">One Way</button>
+                    <button type="button" class="tab-btn" data-tab="round-trip">Round Trip</button>
+                    <button type="button" class="tab-btn" data-tab="multi-city">Multi-City</button>
+                </div>
+                
+                <div class="form-grid">
+                    <div class="form-group">
+                        <label for="departure" class="form-label">From</label>
+                        <input type="text" id="departure" name="departure" class="form-input" placeholder="City or airport" required>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="destination" class="form-label">To</label>
+                        <input type="text" id="destination" name="destination" class="form-input" placeholder="City or airport" required>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="departure-date" class="form-label">Departure</label>
+                        <input type="date" id="departure-date" name="departure_date" class="form-input" required>
+                    </div>
+                    
+                    <div class="form-group round-trip-field" style="display: none;">
+                        <label for="return-date" class="form-label">Return</label>
+                        <input type="date" id="return-date" name="return_date" class="form-input">
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="passengers" class="form-label">Passengers</label>
+                        <select id="passengers" name="passengers" class="form-select">
+                            <option value="1">1 Passenger</option>
+                            <option value="2">2 Passengers</option>
+                            <option value="3">3 Passengers</option>
+                            <option value="4">4 Passengers</option>
+                            <option value="5">5 Passengers</option>
+                        </select>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="class" class="form-label">Class</label>
+                        <select id="class" name="class" class="form-select">
+                            <option value="economy">Economy</option>
+                            <option value="business">Business</option>
+                        </select>
+                    </div>
+                </div>
+                
+                <div class="search-actions">
+                    <button type="submit" class="btn btn-primary btn-search">
+                        <span class="search-icon">✈️</span>
+                        Search Flights
+                    </button>
+                </div>
+            </form>
         </div>
     </div>
 </section>
@@ -46,30 +113,6 @@
                 <p>Simple, fast, and secure online booking process.</p>
             </div>
         </div>
-    </div>
-</section>
-
-<section class="booking-section">
-    <div class="container">
-        <h2>Quick Flight Search</h2>
-        <form action="{% url 'book_flight' %}" method="get" class="search-form">
-            {% csrf_token %}
-            <div class="form-row">
-                <div class="form-group">
-                    <label for="departure" class="form-label">From</label>
-                    <input type="text" id="departure" name="departure" class="form-input" placeholder="Enter departure city" required>
-                </div>
-                <div class="form-group">
-                    <label for="destination" class="form-label">To</label>
-                    <input type="text" id="destination" name="destination" class="form-input" placeholder="Enter destination city" required>
-                </div>
-                <div class="form-group">
-                    <label for="date" class="form-label">Date</label>
-                    <input type="date" id="date" name="date" class="form-input" required>
-                </div>
-            </div>
-            <button type="submit" class="btn btn-primary">Search Flights</button>
-        </form>
     </div>
 </section>
 
