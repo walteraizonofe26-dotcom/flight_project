@@ -27,6 +27,24 @@ document.addEventListener('DOMContentLoaded', function() {
         }
     });
 
+    // User dropdown functionality
+    const userDropdownToggle = document.getElementById('user-dropdown-toggle');
+    const userDropdownMenu = document.getElementById('user-dropdown-menu');
+    
+    if (userDropdownToggle && userDropdownMenu) {
+        userDropdownToggle.addEventListener('click', function(e) {
+            e.preventDefault();
+            userDropdownMenu.classList.toggle('active');
+        });
+
+        // Close user dropdown when clicking outside
+        document.addEventListener('click', function(event) {
+            if (!userDropdownToggle.contains(event.target) && !userDropdownMenu.contains(event.target)) {
+                userDropdownMenu.classList.remove('active');
+            }
+        });
+    }
+
     // Form submission protection
     const forms = document.querySelectorAll('form');
     forms.forEach(form => {

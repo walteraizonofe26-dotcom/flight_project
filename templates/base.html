@@ -1,9 +1,10 @@
+<!-- templates/base.html -->
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>{% block title %}fly Safe - Book Your Flight{% endblock %}</title>
+    <title>{% block title %}Fly Safe - Book Your Flight{% endblock %}</title>
     {% load static %}
     <link rel="stylesheet" href="{% static 'css/base.css' %}">
     {% block extra_css %}{% endblock %}
@@ -40,6 +41,28 @@
                         <li class="nav-item">
                             <a href="{% url 'contact' %}" class="nav-link">Contact</a>
                         </li>
+                        
+                        <!-- Authentication Section -->
+                        <li class="nav-item auth-section">
+                            {% if user.is_authenticated %}
+                                <div class="user-dropdown">
+                                    <a href="#" class="nav-link user-link" id="user-dropdown-toggle">
+                                        <span class="user-name">{{ user.username }}</span>
+                                        <span class="user-icon">👤</span>
+                                    </a>
+                                    <ul class="dropdown-menu user-menu" id="user-dropdown-menu">
+                                        <li><a href="#" class="dropdown-link">My Profile</a></li>
+                                        <li><a href="#" class="dropdown-link">My Bookings</a></li>
+                                        <li><a href="{% url 'logout' %}" class="dropdown-link">Logout</a></li>
+                                    </ul>
+                                </div>
+                            {% else %}
+                                <div class="auth-links">
+                                    <a href="{% url 'user_login' %}" class="nav-link auth-link login-link">Login</a>
+                                    <a href="{% url 'signup' %}" class="btn btn-outline auth-btn signup-btn">Sign Up</a>
+                                </div>
+                            {% endif %}
+                        </li>
                     </ul>
                 </div>
                 <div class="nav-toggle" id="nav-toggle">
@@ -73,7 +96,7 @@
             <div class="footer-section">
                 <h4>Contact Info</h4>
                 <p>+234 800 000 0000</p>
-                <p>info@FlySafe.com</p>
+                <p>info@flysafe.com</p>
             </div>
         </div>
         <div class="footer-bottom">

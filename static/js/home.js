@@ -1,17 +1,15 @@
 // Home page specific JavaScript
 document.addEventListener('DOMContentLoaded', function() {
     // Set minimum date for flight search
-    const departureDate = document.getElementById('departure-date');
-    const returnDate = document.getElementById('return-date');
-    
-    if (departureDate) {
+    const dateInput = document.getElementById('date');
+    if (dateInput) {
         const today = new Date();
         const tomorrow = new Date(today);
         tomorrow.setDate(tomorrow.getDate() + 1);
         
         const formattedDate = tomorrow.toISOString().split('T')[0];
-        departureDate.min = formattedDate;
-        departureDate.value = formattedDate;
+        dateInput.min = formattedDate;
+        dateInput.value = formattedDate;
     }
 
     // Auto-complete for departure and destination
@@ -21,79 +19,67 @@ document.addEventListener('DOMContentLoaded', function() {
         'Nairobi', 'Dar es Salaam', 'Cairo', 'Casablanca'
     ];
 
-    const departureInput = document.getElementById('departure');
-    const destinationInput = document.getElementById('destination');
+    const fromInput = document.getElementById('from');
+    const toInput = document.getElementById('to');
 
-    if (departureInput) {
-        setupAutoComplete(departureInput, cities);
+    if (fromInput) {
+        setupAutoComplete(fromInput, cities);
     }
 
-    if (destinationInput) {
-        setupAutoComplete(destinationInput, cities);
+    if (toInput) {
+        setupAutoComplete(toInput, cities);
     }
 
-    // Set return date to be after departure date
-    if (departureDate && returnDate) {
-        departureDate.addEventListener('change', function() {
-            if (this.value) {
-                returnDate.min = this.value;
-                if (returnDate.value && returnDate.value < this.value) {
-                    returnDate.value = this.value;
-                }
-            }
-        });
-    }
-
-    // Search tabs functionality
-    const tabBtns = document.querySelectorAll('.tab-btn');
-    const roundTripField = document.querySelector('.round-trip-field');
-    
-    tabBtns.forEach(btn => {
-        btn.addEventListener('click', function() {
-            // Remove active class from all buttons
-            tabBtns.forEach(b => b.classList.remove('active'));
-            // Add active class to clicked button
-            this.classList.add('active');
+    // Form submission
+    const form = document.querySelector('.quick-search-form');
+    form.addEventListener('submit', function(e) {
+        e.preventDefault();
+        
+        // Validate form
+        if (validateForm()) {
+            const submitBtn = form.querySelector('.search-btn');
+            submitBtn.textContent = 'Searching...';
+            submitBtn.disabled = true;
             
-            // Show/hide return date field based on tab
-            if (this.dataset.tab === 'round-trip') {
-                roundTripField.style.display = 'block';
-            } else {
-                roundTripField.style.display = 'none';
-            }
-        });
-    });
-
-    // Smooth scrolling for anchor links
-    const links = document.querySelectorAll('a[href^="#"]');
-    links.forEach(link => {
-        link.addEventListener('click', function(e) {
-            e.preventDefault();
-            const targetId = this.getAttribute('href');
-            const targetElement = document.querySelector(targetId);
-            if (targetElement) {
-                targetElement.scrollIntoView({
-                    behavior: 'smooth',
-                    block: 'start'
-                });
-            }
-        });
-    });
-
-    // Feature card animations
-    const featureCards = document.querySelectorAll('.feature-card');
-    featureCards.forEach((card, index) => {
-        setTimeout(() => {
-            card.style.opacity = '0';
-            card.style.transform = 'translateY(20px)';
-            card.style.transition = 'all 0.6s ease';
-            
+            // Simulate API call delay
             setTimeout(() => {
-                card.style.opacity = '1';
-                card.style.transform = 'translateY(0)';
-            }, 100);
-        }, index * 200);
+                // Redirect to results page with form data
+                const formData = new FormData(form);
+                const params = new URLSearchParams(formData).toString();
+                window.location.href = `/flight-results?${params}`;
+            }, 2000);
+        }
     });
+
+    // Form validation
+    function validateForm() {
+        let isValid = true;
+        clearAllErrors();
+        
+        // Validate from and to fields
+        if (!fromInput.value.trim()) {
+            showError(fromInput, 'Please enter departure city');
+            isValid = false;
+        }
+        
+        if (!toInput.value.trim()) {
+            showError(toInput, 'Please enter destination city');
+            isValid = false;
+        }
+        
+        if (fromInput.value.trim().toLowerCase() === toInput.value.trim().toLowerCase()) {
+            showError(toInput, 'Departure and destination cannot be the same');
+            isValid = false;
+        }
+        
+        // Validate date
+        if (!dateInput.value) {
+            showError(dateInput, 'Please select departure date');
+            isValid = false;
+        }
+        
+        return isValid;
+    }
 });
 
 function setupAutoComplete(input, suggestions) {
@@ -137,6 +123,7 @@ function setupAutoComplete(input, suggestions) {
                 item.addEventListener('click', function() {
                     input.value = suggestion;
                     autocompleteList.style.display = 'none';
+                    input.focus();
                 });
                 
                 autocompleteList.appendChild(item);
@@ -155,39 +142,29 @@ function setupAutoComplete(input, suggestions) {
     });
 }
 
-// Add smooth scrolling effect
-function smoothScroll() {
-    const scrollElements = document.querySelectorAll('.feature-card, .destination-card');
+function showError(input, message) {
+    clearError(input);
     
-    const elementInView = (el, dividend = 1) => {
-        const elementTop = el.getBoundingClientRect().top;
-        return (
-            elementTop <= (window.innerHeight || document.documentElement.clientHeight) / dividend
-        );
-    };
-
-    const displayScrollElement = (element) => {
-        element.style.opacity = 1;
-        element.style.transform = "translateY(0)";
-    };
-
-    const hideScrollElement = (element) => {
-        element.style.opacity = 0;
-        element.style.transform = "translateY(72px)";
-    };
-
-    const handleScrollAnimation = () => {
-        scrollElements.forEach((el) => {
-            if (elementInView(el, 1.25)) {
-                displayScrollElement(el);
-            } else {
-                hideScrollElement(el);
-            }
-        });
-    };
-
-    window.addEventListener("scroll", handleScrollAnimation);
+    const errorElement = document.createElement('div');
+    errorElement.className = 'form-error';
+    errorElement.textContent = message;
+    errorElement.style.color = '#dc3545';
+    errorElement.style.fontSize = '0.875rem';
+    errorElement.style.marginTop = '0.25rem';
+    
+    input.parentNode.appendChild(errorElement);
+    input.style.borderColor = '#dc3545';
 }
 
-// Initialize scroll animations
-smoothScroll();
+function clearError(input) {
+    const errorElement = input.parentNode.querySelector('.form-error');
+    if (errorElement) {
+        errorElement.remove();
+    }
+    input.style.borderColor = '#dee2e6';
+}
+
+function clearAllErrors() {
+    document.querySelectorAll('.form-error').forEach(error => error.remove());
+    document.querySelectorAll('.form-input.error').forEach(input => input.classList.remove('error');
+}
